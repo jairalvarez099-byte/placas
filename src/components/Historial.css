@@ -1,0 +1,183 @@
+.historial-container {
+  width: 100%;
+}
+
+.historial-header {
+  margin-bottom: 2rem;
+}
+
+.historial-header h2 {
+  font-size: 2rem;
+  color: #1e3a8a;
+  margin-bottom: 0.5rem;
+}
+
+.historial-header p {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.historial-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .historial-container {
+    padding: 0;
+  }
+  
+  .historial-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .historial-filters {
+    flex-direction: column;
+  }
+  
+  .search-input,
+  .filter-select,
+  .date-input {
+    width: 100%;
+  }
+  
+  .historial-table-container {
+    overflow-x: auto;
+  }
+  
+  .historial-table {
+    min-width: 800px;
+  }
+}
+
+.search-input,
+.filter-select,
+.date-input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 250px;
+}
+
+.filter-select,
+.date-input {
+  min-width: 150px;
+}
+
+.search-input:focus,
+.filter-select:focus,
+.date-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.historial-table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.historial-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.historial-table thead {
+  background: #f8fafc;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.historial-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.historial-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.2s;
+}
+
+.historial-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.historial-table td {
+  padding: 1rem;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.placa-cell {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge.robado {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.badge.verificado {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.historial-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.pagination-btn {
+  padding: 0.5rem 1.5rem;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #475569;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
