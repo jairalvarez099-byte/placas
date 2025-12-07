@@ -1,7 +1,38 @@
-import React from 'react'
-import './Perfil.css'
+import React, { useState, useEffect } from 'react'
+import { getUserData, getUserEmail, getUserRole, getUserId } from '../utils/auth'
+import './css/Perfil.css'
 
 function Perfil() {
+  const [userData, setUserData] = useState({
+    id: '',
+    email: '',
+    role: ''
+  })
+
+  useEffect(() => {
+    // Cargar datos del usuario desde localStorage
+    const user = getUserData()
+    if (user) {
+      setUserData(user)
+    } else {
+      // Cargar datos individuales si no hay userData completo
+      setUserData({
+        id: getUserId() || '',
+        email: getUserEmail() || '',
+        role: getUserRole() || ''
+      })
+    }
+  }, [])
+
+  const formatRole = (role) => {
+    const roles = {
+      'user': 'Usuario',
+      'admin': 'Administrador',
+      'operator': 'Operador'
+    }
+    return roles[role] || role
+  }
+
   return (
     <div className="perfil-container">
       <div className="perfil-header">
@@ -18,28 +49,41 @@ function Perfil() {
 
           <div className="info-section">
             <div className="info-group">
-              <label>Nombre Completo</label>
-              <input type="text" defaultValue="Juan Pérez" className="info-input" />
+              <label>ID de Usuario</label>
+              <input 
+                type="text" 
+                value={userData.id} 
+                className="info-input" 
+                disabled 
+              />
             </div>
 
             <div className="info-group">
               <label>Correo Electrónico</label>
-              <input type="email" defaultValue="juan.perez@example.com" className="info-input" />
-            </div>
-
-            <div className="info-group">
-              <label>Teléfono</label>
-              <input type="tel" defaultValue="+52 555 123 4567" className="info-input" />
+              <input 
+                type="email" 
+                value={userData.email} 
+                className="info-input" 
+                readOnly 
+              />
             </div>
 
             <div className="info-group">
               <label>Rol</label>
-              <input type="text" defaultValue="Operador" className="info-input" disabled />
+              <input 
+                type="text" 
+                value={formatRole(userData.role)} 
+                className="info-input" 
+                disabled 
+              />
             </div>
 
             <div className="info-group">
-              <label>Fecha de Registro</label>
-              <input type="text" defaultValue="15 de Enero, 2024" className="info-input" disabled />
+              <label>Estado</label>
+              <div className="status-badge">
+                <span className="status-dot active"></span>
+                Activo
+              </div>
             </div>
           </div>
 

@@ -1,13 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import Sidebar from './Sidebar'
 import Perfil from './Perfil'
 import Historial from './Historial'
 import Reportes from './Reportes'
-import Camara from './Camara'
-import './Dashboard.css'
+import './css/Dashboard.css'
 
 function Dashboard() {
   const [activeView, setActiveView] = useState('perfil')
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    // Verificar autenticación al cargar el dashboard
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
+    
+    if (!isLoggedIn) {
+      console.log('❌ Usuario no autenticado, redirigiendo a login...')
+      navigate('/login', { replace: true })
+    } else {
+      console.log('✅ Usuario autenticado correctamente')
+    }
+  }, [navigate])
 
   const renderContent = () => {
     switch (activeView) {
@@ -17,8 +31,7 @@ function Dashboard() {
         return <Historial />
       case 'reportes':
         return <Reportes />
-      case 'camara':
-        return <Camara />
+      
       default:
         return <Perfil />
     }

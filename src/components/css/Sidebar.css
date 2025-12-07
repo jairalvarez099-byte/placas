@@ -1,7 +1,7 @@
 .sidebar {
   width: 280px;
   height: 100vh;
-  background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
+  background: linear-gradient(180deg, #2985b0 0%, #377fae 100%);
   display: flex;
   flex-direction: column;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
@@ -18,7 +18,7 @@
 
 .sidebar-title {
   color: white;
-  font-size: 1.25rem;
+  font-size: 2.0rem;
   font-weight: 600;
   text-align: center;
 }
@@ -83,7 +83,7 @@
 }
 
 .logout-btn:hover {
-  background: rgba(239, 68, 68, 0.2);
-  color: #fca5a5;
+  background: rgba(223, 218, 218, 0.2);
+  color: #ffff;
 }
 

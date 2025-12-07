@@ -1,25 +1,30 @@
 import React from 'react'
-import './Sidebar.css'
+import { useNavigate } from 'react-router-dom'
+import { logout } from '../services/api'
+import './css/Sidebar.css'
 
 function Sidebar({ activeView, setActiveView }) {
+  const navigate = useNavigate()
+  
   const menuItems = [
     { id: 'perfil', label: 'Perfil', icon: '👤' },
     { id: 'historial', label: 'Historial', icon: '📋' },
     { id: 'reportes', label: 'Reportes', icon: '📊' },
-    { id: 'camara', label: 'Cámara', icon: '📷' },
+    
   ]
 
   const handleLogout = () => {
     if (window.confirm('¿Estás seguro de que deseas cerrar sesión?')) {
       console.log('Cerrando sesión...')
-      // Aquí iría la lógica de logout
+      logout() // Usar la función del servicio API
+      navigate('/login')
     }
   }
 
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <h1 className="sidebar-title">🚔 Placas Robadas</h1>
+        <h1 className="sidebar-title"> Menu</h1>
       </div>
       
       <nav className="sidebar-nav">
