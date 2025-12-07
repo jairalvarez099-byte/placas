@@ -114,6 +114,10 @@
     flex-direction: column;
   }
   
+  .search-container {
+    width: 100%;
+  }
+  
   .search-input,
   .filter-select,
   .date-input {
@@ -129,6 +133,13 @@
   }
 }
 
+.search-container {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 250px;
+}
+
 .search-input,
 .filter-select,
 .date-input {
@@ -141,7 +152,28 @@
 
 .search-input {
   flex: 1;
-  min-width: 250px;
+  min-width: 200px;
+}
+
+.search-btn {
+  padding: 0.75rem 1.5rem;
+  background: #368bad;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.search-btn:hover {
+  background: #10A1C1;
+}
+
+.search-btn:active {
+  transform: scale(0.98);
 }
 
 .filter-select,

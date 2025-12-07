@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { loginUser } from '../services/api'
 import './css/Login.css'
 import logo from './assest/logo.png'
 
@@ -8,6 +9,8 @@ function Login() {
     email: '',
     password: ''
   })
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const navigate = useNavigate()
 
   const handleChange = (e) => {
@@ -15,17 +18,33 @@ function Login() {
       ...formData,
       [e.target.name]: e.target.value
     })
+    // Limpiar error al escribir
+    if (error) setError('')
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Aquí iría la lógica de autenticación
-    console.log('Iniciando sesión...', formData)
+    setLoading(true)
+    setError('')
     
-    // Simulación de login exitoso
-    if (formData.email && formData.password) {
-      localStorage.setItem('isLoggedIn', 'true')
+    console.log('🚀 Intentando iniciar sesión con:', formData.email)
+
+    try {
+      const response = await loginUser(formData.email, formData.password)
+      
+      console.log('✅ Login exitoso!')
+      console.log('👤 Usuario:', response.data.user)
+      console.log('🔑 Token guardado en localStorage')
+      console.log('📋 Headers que se enviarán en próximas peticiones:')
+      console.log('Authorization: Bearer ' + localStorage.getItem('authToken'))
+      
+      // Navegar al dashboard
       navigate('/dashboard')
+    } catch (err) {
+      console.error('❌ Error en login:', err)
+      setError(typeof err === 'string' ? err : 'Error al iniciar sesión. Verifica tus credenciales.')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -81,8 +100,14 @@ function Login() {
             </Link>
           </div>
 
-          <button type="submit" className="login-btn">
-            Iniciar Sesión
+          {error && (
+            <div className="error-message">
+              {error}
+            </div>
+          )}
+
+          <button type="submit" className="login-btn" disabled={loading}>
+            {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
           </button>
         </form>
 

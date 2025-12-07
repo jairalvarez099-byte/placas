@@ -6,7 +6,7 @@ function Reportes() {
     { label: 'Total de Detecciones', value: '1,234', icon: '📊', color: '#3b82f6' },
     { label: 'Vehículos Robados', value: '89', icon: '🚨', color: '#ef4444' },
     { label: 'Alertas Enviadas', value: '67', icon: '📢', color: '#f59e0b' },
-    { label: 'Tasa de Precisión', value: '94.5%', icon: '✅', color: '#10b981' },
+    
   ]
 
   const reportesRecientes = [
@@ -59,16 +59,7 @@ function Reportes() {
           <h3>Generar Nuevo Reporte</h3>
         </div>
         <div className="reporte-form-card">
-          <div className="form-group">
-            <label>Tipo de Reporte</label>
-            <select className="form-select">
-              <option value="">Seleccionar tipo...</option>
-              <option value="diario">Reporte Diario</option>
-              <option value="semanal">Reporte Semanal</option>
-              <option value="mensual">Reporte Mensual</option>
-              <option value="personalizado">Personalizado</option>
-            </select>
-          </div>
+          
 
           <div className="form-row">
             <div className="form-group">
@@ -85,17 +76,11 @@ function Reportes() {
             <label>Formato</label>
             <div className="format-options">
               <label className="format-option">
-                <input type="radio" name="format" value="pdf" defaultChecked />
-                <span>PDF</span>
-              </label>
-              <label className="format-option">
-                <input type="radio" name="format" value="excel" />
+                <input type="radio" name="format" value="excel" defaultChecked />
                 <span>Excel</span>
               </label>
-              <label className="format-option">
-                <input type="radio" name="format" value="csv" />
-                <span>CSV</span>
-              </label>
+                  
+              
             </div>
           </div>
 
